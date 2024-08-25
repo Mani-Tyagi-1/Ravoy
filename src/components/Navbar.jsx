@@ -48,7 +48,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="w-full h-[97px] bg-[#FFF9F3E5] flex justify-center items-center text-center font-[Inter] font-[300]">
-        <ul className="flex w-[80%] justify-evenly ">
+        <ul className="flex w-[60%] justify-evenly ">
           <Link to="/">
           <li className="font-[300] text-[15px] hover:text-[#0F6FA6] hover:underline hover: cursor-pointer ">
             HOME

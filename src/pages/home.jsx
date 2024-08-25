@@ -6,6 +6,8 @@ const home = () => {
     <div>
       <h1 className='text-4xl'>Home</h1>
       <Link to='/about'> About</Link>
+      <Link to='/dashboard-overview'> Dashboard</Link>
+      
     </div>
   )
 }
