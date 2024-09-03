@@ -2,8 +2,47 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const overview = () => {
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "Bharti",
+    phoneNumber: "9592992539",
+    email: "sample@gmail.com",
+  });
+  const [addressData, setAddressData] = useState({
+    name: "Bharti",
+    phoneNumber: "9592992539",
+    address: "SCO 20 21sector 19 chandigarh,CHANDIGARH - 160019",
+    state: "CHANDIGARH",
+    country: "India",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleAddressInputChange = (e) => {
+    const { name, value } = e.target;
+    setAddressData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+    const handleEditClick = () => {
+      setIsEditing(true);
+    };
+
+    const handleSaveClick = () => {
+      setIsEditing(false);
+    };
+
   return (
     <div className="min-w-screen h-[5371px]">
       <Navbar />
@@ -91,12 +130,76 @@ const overview = () => {
                   <h2 className="w-[296px] h-[25px] font-[Montserrat] font-[500] text-[20px] text-[#424242] ">
                     Personal Information
                   </h2>
-                  <div className="w-[110px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2">
-                    EDIT DETAILS
+
+                  {isEditing ? (
+                    <button type="button" onClick={handleSaveClick}>
+                      <div className="w-[110px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2 ">
+                        Save
+                      </div>
+                    </button>
+                  ) : (
+                    <button type="button" onClick={handleEditClick}>
+                      <div className="w-[110px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2 ">
+                        Edit Details
+                      </div>
+                    </button>
+                  )}
+                </div>
+
+                <div className="absolute edit-details ">
+                  <div className="p-5 flex flex-col gap-2">
+                    <div className="flex">
+                      <h3 className="w-[231px] h-[15px] font-[Roboto] font-[400] text-[15px] text-[#636363] ">
+                        Name
+                      </h3>{" "}
+                      :{" "}
+                      <h3 className="ml-4 text-[#494949] font-[500] font-[Roboto] text-[16px] ">
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          readOnly={!isEditing}
+                          className="outline-none"
+                        />
+                      </h3>
+                    </div>
+                    <div className="flex">
+                      <h3 className="w-[231px] h-[15px] font-[Roboto] font-[400] text-[15px] text-[#636363] ">
+                        Phone Number
+                      </h3>{" "}
+                      :{" "}
+                      <h3 className="ml-4 text-[#494949] font-[500] font-[Roboto] text-[16px]">
+                        <input
+                          type="text"
+                          name="phoneNumber"
+                          value={formData.phoneNumber}
+                          onChange={handleInputChange}
+                          readOnly={!isEditing}
+                          className="outline-none"
+                        />
+                      </h3>
+                    </div>
+                    <div className="flex">
+                      <h3 className="w-[231px] h-[15px] font-[Roboto] font-[400] text-[15px] text-[#636363] ">
+                        Email Address
+                      </h3>{" "}
+                      :{" "}
+                      <h3 className="ml-4 text-[#494949] font-[500] font-[Roboto] text-[16px]">
+                        <input
+                          type="text"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          readOnly={!isEditing}
+                          className="outline-none"
+                        />
+                      </h3>
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-5 flex flex-col gap-2">
+                {/* <div className="p-5 flex flex-col gap-2">
                   <div className="flex">
                     <h3 className="w-[231px] h-[15px] font-[Roboto] font-[400] text-[15px] text-[#636363] ">
                       Name
@@ -124,7 +227,7 @@ const overview = () => {
                       sample@gmail.com
                     </h3>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -140,24 +243,72 @@ const overview = () => {
                   <h2 className="w-[296px] h-[25px] font-[Montserrat] font-[500] text-[20px] text-[#424242] ">
                     Default Address
                   </h2>
-                  <div className="w-[116px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2">
-                    EDIT ADDRESS
-                  </div>
+                  {isEditing ? (
+                    <button type="button" onClick={handleSaveClick}>
+                      <div className="w-[110px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2 ">
+                        Save
+                      </div>
+                    </button>
+                  ) : (
+                    <button type="button" onClick={handleEditClick}>
+                      <div className="w-[110px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2 ">
+                        Edit Address
+                      </div>
+                    </button>
+                  )}
                 </div>
 
-                <div className="p-5 flex flex-col gap-2">
-                  <div className="flex">
+                <div className=" w-[990px] p-5 flex flex-col gap-2">
+                  <div className="w-full flex">
                     <h3 className="w-[231px] h-[15px] font-[Roboto] font-[400] text-[15px] text-[#636363] ">
                       Address
                     </h3>{" "}
                     :{" "}
-                    <h3 className="w-[168pxx] ml-4 text-[#494949] font-[500] font-[Roboto] text-[16px]">
-                      Bushra Khanam <br />
-                      +91 9592992539 <br />
-                      SCO 20 21sector 19 chandigarh, <br />
-                      CHANDIGARH - 160019 <br />
-                      CHANDIGARH <br />
-                      India
+                    <h3 className=" w-full ml-4 text-[#494949] font-[500] font-[Roboto] text-[16px] bg-white px-4">
+                      <input
+                        type="text"
+                        name="name"
+                        value={addressData.name}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="phoneNumber"
+                        value={addressData.phoneNumber}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="address"
+                        value={addressData.address}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none w-full"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="state"
+                        value={addressData.state}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="country"
+                        value={addressData.country}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
                     </h3>
                   </div>
                 </div>
@@ -200,7 +351,7 @@ const overview = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -232,7 +383,7 @@ const overview = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -264,7 +415,7 @@ const overview = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -374,7 +525,7 @@ const overview = () => {
           <div className="h-full w-[120px]  ">
             <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
           </div>
-          <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+          <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
             <h2 className="w-full h-full font-[Inter] font-[400] text-[16px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
               BROWSE ALL COLLECTIONS
             </h2>

@@ -117,7 +117,7 @@ const wishlist = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -149,7 +149,7 @@ const wishlist = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -181,7 +181,7 @@ const wishlist = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -291,7 +291,7 @@ const wishlist = () => {
           <div className="h-full w-[120px]  ">
             <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
           </div>
-          <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+          <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
             <h2 className="w-full h-full font-[Inter] font-[400] text-[16px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
               BROWSE ALL COLLECTIONS
             </h2>

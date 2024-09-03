@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
           <div className="w-[669px] h-[60px] flex border-[1px] border-[#BFBFBF] bg-[#FFF9F3]">
             <input
-              className="w-[669px] h-[55px] bg-inherit outline-none placeholder:text-[13px] placeholder:leading-[25px] text-center placeholder:text-[#5C5C5C]  placeholder:text-left placeholder:px-5"
+              className="w-[669px] h-[55px] bg-inherit outline-none placeholder:text-[13px] placeholder:leading-[25px] placeholder:text-[#5C5C5C]  placeholder:text-left  px-5"
               placeholder="Enter your Email"
             />
             <div className="flex items-center px-8 gap-2 ">

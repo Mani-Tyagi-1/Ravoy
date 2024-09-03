@@ -1,9 +1,34 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import CartButton from "../../components/cartButton";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const addressBook = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [addressData, setAddressData] = useState({
+    name: "Bharti",
+    phoneNumber: "9592992539",
+    address: "SCO 20 21sector 19 chandigarh,CHANDIGARH - 160019",
+    state: "CHANDIGARH",
+    country: "India",
+  });
+  const handleAddressInputChange = (e) => {
+    const { name, value } = e.target;
+    setAddressData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
+  };
   return (
     <div className="min-w-screen h-[4780px]">
       <Navbar />
@@ -78,7 +103,7 @@ const addressBook = () => {
         </div>
 
         <div className=" flex flex-col ">
-          <div className="w-[1083px] h-[500px] rounded-[10px] mt-10 mx-[25px] bg-[#FFF9F3] flex justify-center items-center   ">
+          <div className="w-[1083px] h-[553px] rounded-[10px] mt-10 mx-[25px] bg-[#FFF9F3] flex justify-center items-center   ">
             <div className="p-10">
               <h1 className="w-[287px] h-[25px] font-[Montserrat] font-[400] text-[24px] text-[#424242] mb-10 ">
                 {" "}
@@ -89,24 +114,72 @@ const addressBook = () => {
                   <h2 className="w-[296px] h-[25px] font-[Montserrat] font-[500] text-[20px] text-[#424242] ">
                     Default Address
                   </h2>
-                  <div className="w-[116px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2">
-                    EDIT ADDRESS
-                  </div>
+                  {isEditing ? (
+                    <button type="button" onClick={handleSaveClick}>
+                      <div className="w-[110px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2 ">
+                        Save
+                      </div>
+                    </button>
+                  ) : (
+                    <button type="button" onClick={handleEditClick}>
+                      <div className="w-[110px] h-[25px] rounded-[10px] bg-[#C3E6F5] font-[Inter] font-[600] text-[13px] text-[#5C5C5C] flex items-center justify-center hover:cursor-pointer p-2 ">
+                        Edit Address
+                      </div>
+                    </button>
+                  )}
                 </div>
 
-                <div className="p-5 flex flex-col gap-2">
-                  <div className="flex">
+                <div className=" w-[990px] p-5 flex flex-col gap-2">
+                  <div className="w-full flex">
                     <h3 className="w-[231px] h-[15px] font-[Roboto] font-[400] text-[15px] text-[#636363] ">
                       Address
                     </h3>{" "}
                     :{" "}
-                    <h3 className="w-[168pxx] ml-4 text-[#494949] font-[500] font-[Roboto] text-[16px]">
-                      Bushra Khanam <br />
-                      +91 9592992539 <br />
-                      SCO 20 21sector 19 chandigarh, <br />
-                      CHANDIGARH - 160019 <br />
-                      CHANDIGARH <br />
-                      India
+                    <h3 className=" w-full ml-4 text-[#494949] font-[500] font-[Roboto] text-[16px] bg-white px-4">
+                      <input
+                        type="text"
+                        name="name"
+                        value={addressData.name}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="phoneNumber"
+                        value={addressData.phoneNumber}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="address"
+                        value={addressData.address}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none w-full"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="state"
+                        value={addressData.state}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
+                      <br />
+                      <input
+                        type="text"
+                        name="country"
+                        value={addressData.country}
+                        onChange={handleAddressInputChange}
+                        readOnly={!isEditing}
+                        className="outline-none"
+                      />{" "}
                     </h3>
                   </div>
                 </div>
@@ -149,7 +222,7 @@ const addressBook = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer ">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -181,7 +254,7 @@ const addressBook = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -213,7 +286,7 @@ const addressBook = () => {
                     <div className="h-full w-[120px]  ">
                       <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
                     </div>
-                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+                    <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
                       <h2 className="w-full h-full font-[Inter] font-[400] text-[20px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
                         Move to Cart
                       </h2>
@@ -323,7 +396,7 @@ const addressBook = () => {
           <div className="h-full w-[120px]  ">
             <img src="https://s3-alpha-sig.figma.com/img/5f5e/b394/843282f33350ed1e0603043d81f1a532?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GKF29Yr4D3FjunsqgtBX78LVlEREylzyJmVusBz6TCFWGq340AlKrgDTgUSGbuhjSzvzejJPMUvNwRarSANsMiAl8pvHX9TzCAWrkhP-8Q6mw6vwe4DCdQVmdG0osKj4cK92egW-yMHDXNM55gQSWRmKNrwKgYxlhaZunhhaUN0xy-QAxAlELigs~vXcd7qeMDGIZFmVQPWjrknNWc0OUs6TzIWqWZQAOTH~duUBoJRQsQ-D6l7CSZITtdGAyupYrwZ9ZW8ndFDHZvkx37dRAeM2UixmlgvZuPrFHYCUdW476VS9OeI11s3mVmhZlAN9XjgUKrGUCLDT2dqmoK1yOQ__" />
           </div>
-          <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5">
+          <div className="w-full h-[52px] border-[1px] border-[#767676] absolute top-5 hover:cursor-pointer">
             <h2 className="w-full h-full font-[Inter] font-[400] text-[16px] text-center text-[#767676] flex justify-center items-center tracking-[4px] ">
               BROWSE ALL COLLECTIONS
             </h2>
